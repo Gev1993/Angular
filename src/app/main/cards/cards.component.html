@@ -1,0 +1,52 @@
+<form class="form-inline my-2 my-lg-0">
+  <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"
+  [ngModel]="search"
+         (ngModelChange)="searchProduct($event)"
+         [ngModelOptions]="{standalone: true}"
+  >
+  <br> <br>
+
+  <select class="form-control">
+    <option value="High">High</option>
+    <option value="Low">Low</option>
+  </select>
+</form>
+
+<br>
+
+<div
+  *ngIf = "isLoading; else productslist">
+  <app-loader></app-loader>
+</div>
+
+<ng-template #productslist>
+  <h3 class="text-center" *ngIf="product.length === 0">No Products</h3>
+<div class="card mb-3 mr-auto ml-auto" style="max-width: 540px;" *ngFor="let products of product" appBorderedBox>
+  <div class="row no-gutters">
+    <div class="col-md-4">
+      <img
+        [src]="products.imgUrl"
+        class="card-img" [alt]="products.title">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <p class="card-text">{{products.price + ' $'}}</p>
+        <h5 class="card-title">{{products.title}}</h5>
+        <p class="card-text"><small class="text-muted">{{products.description}}</small></p>
+
+        <button class="btn btn-outline-danger" (click)="showEdit()">Show</button>
+        <form *ngIf="isEdit">
+          <div class="form-group">
+            <br>
+            <input type="number" name="price" [ngModel]="products.price"> <br>
+            <input type="text" name="title" [ngModel]="products.title"> <br>
+            <input type="text" name="description" [ngModel]="products.description"> <br>
+            <button type="submit" class="btn btn-outline-primary">Save</button>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+</ng-template>
