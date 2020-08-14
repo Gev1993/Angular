@@ -1,0 +1,11 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "title": "ADILETTE BOOST SLIDES",
+      "description": "or pay over time in interest-free installments with Affirm or Klarna.",
+      "price": 180,
+      "imgUrl": "https://assets.adidas.com/images/h_840,f_auto,q_auto:sensitive,fl_lossy/104cccdd859f489191c5ab0b00bb7ca1_9366/Ultraboost_20_Shoes_Black_EG0714_01_standard.jpg"
+    }
+  ]
+}
