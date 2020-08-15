@@ -6,7 +6,6 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class DataService {
 
-
   // tslint:disable-next-line:variable-name
   constructor(private _http: HttpClient) { }
 

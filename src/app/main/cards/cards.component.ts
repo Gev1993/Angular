@@ -1,6 +1,6 @@
 import { Product } from '../../core/models/product';
 import { Component, OnInit } from '@angular/core';
-import { DataService } from '../../core/server/data.service';
+import { DataService } from '../../core/service/data.service';
 
 
 @Component({
@@ -56,10 +56,9 @@ export class CardsComponent implements OnInit {
       // )
     // ];
 
-    this.cachedProduct = this.product = this._dataService.getProducts();
+    this._dataService.getProductsFromDb().subscribe(users => this.product = this.cachedProduct  = users.products);
 
     this.isLoading = !this.isLoading;
-    // this._dataService.getProductsFromDb();
   }
 
   public searchProduct(searchText: string): void {
