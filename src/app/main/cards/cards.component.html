@@ -6,20 +6,20 @@
   >
   <br> <br>
 
-  <select class="form-control">
-    <option value="High">High</option>
-    <option value="Low">Low</option>
-  </select>
+  <button class="form-control" type="button" (click)="sort(false)">Low</button>
+  <br> <br>
+  <button class="form-control" type="button" (click)="sort(true)">High</button>
+
 </form>
 
 <br>
 
 <div
-  *ngIf = "isLoading; else productslist">
+  *ngIf = "isLoading; else productsList">
   <app-loader></app-loader>
 </div>
 
-<ng-template #productslist>
+<ng-template #productsList>
   <h3 class="text-center" *ngIf="product.length === 0">No Products</h3>
 <div class="card mb-3 mr-auto ml-auto" style="max-width: 540px;" *ngFor="let products of product" appBorderedBox>
   <div class="row no-gutters">
@@ -35,14 +35,45 @@
         <p class="card-text"><small class="text-muted">{{products.description}}</small></p>
 
         <button class="btn btn-outline-danger" (click)="showEdit()">Show</button>
-        <form *ngIf="isEdit">
-          <div class="form-group">
-            <br>
-            <input type="number" name="price" [ngModel]="products.price"> <br>
-            <input type="text" name="title" [ngModel]="products.title"> <br>
-            <input type="text" name="description" [ngModel]="products.description"> <br>
-            <button type="submit" class="btn btn-outline-primary">Save</button>
+        <br><br>
+        <form *ngIf="isEdit" novalidate [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+          <div class="form-group" [ngClass]="{
+          'has-error': price.invalid && price.dirty,
+          'has-success': price.valid && price.dirty
+          }">
+            <input type="text" formControlName="price">
+            <div class="alert alert-danger" *ngIf="price.errors && (price.dirty || price.touched)">
+              <p *ngIf="price.errors.required">поле обяезателбное для ввода </p>
+              <p *ngIf="price.errors.minlength">не правилни длина {{price.errors.minlength.requiredLength}}</p>
+              <p *ngIf="price.errors.maxlength">не правилни длина {{price.errors.maxlength.requiredLength}}</p>
+            </div>
           </div>
+
+          <div class="form-group" [ngClass]="{
+          'has-error': title.invalid && title.dirty,
+          'has-success': title.valid && title.dirty
+          }">
+            <input type="text" formControlName="title">
+            <div class="alert alert-danger" *ngIf="title.errors && (title.dirty || title.touched)">
+              <p *ngIf="title.errors.required">поле обяезателбное для ввода </p>
+              <p *ngIf="title.errors.minlength">не правилни длина {{title.errors.minlength.requiredLength}}</p>
+              <p *ngIf="title.errors.maxlength">не правилни длина {{title.errors.maxlength.requiredLength}}</p>
+            </div>
+          </div>
+
+          <div class="form-group" [ngClass]="{
+          'has-error': description.invalid && description.dirty,
+          'has-success': description.valid && description.dirty
+          }">
+            <input type="text" formControlName="description">
+            <div class="alert alert-danger" *ngIf="description.errors && (description.dirty || description.touched)">
+              <p *ngIf="description.errors.required">поле обяезателбное для ввода </p>
+              <p *ngIf="description.errors.minlength">не правилни длина {{description.errors.minlength.requiredLength}}</p>
+              <p *ngIf="description.errors.maxlength">не правилни длина {{description.errors.maxlength.requiredLength}}</p>
+            </div>
+          </div>
+            <button type="submit" class="btn btn-outline-primary" [disabled]="registrationForm.invalid">Save</button>
+
         </form>
 
       </div>

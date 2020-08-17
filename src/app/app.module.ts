@@ -5,7 +5,7 @@ import { AppComponent } from './root/app.component';
 import { HeadersComponent } from './headers/headers.component';
 import { CardsComponent } from './main/cards/cards.component';
 import { FooterComponent } from './footer/footer.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import {SharedModule} from './shared/shared.module';
 import { DataService } from './core/service/data.service';
@@ -23,7 +23,8 @@ import {HttpClientModule} from '@angular/common/http';
     FormsModule,
     NoopAnimationsModule,
     SharedModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [DataService],
   bootstrap: [AppComponent],
