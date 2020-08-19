@@ -1,0 +1,52 @@
+<div class="col-md-4 col-md-offset-4" id="login">
+  <section id="inner-wrapper" class="login">
+    <article>
+      <form novalidate [formGroup]="register" (ngSubmit)="onSubmits()">
+        <div class="form-group" [ngClass]="{
+        'has-error': name.invalid && name.dirty,
+         'has-success': name.valid && name.dirty
+        }">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-user"> </i></span>
+            <input type="text" class="form-control" placeholder="Name" formControlName="name">
+          </div>
+          <div class="alert alert-danger" *ngIf="name.errors && (name.dirty || name.touched)">
+            <p *ngIf="name.errors.required">поле обяезателбное для ввода </p>
+            <p *ngIf="name.errors.minlength">не правилни длина {{name.errors.minlength.requiredLength}}</p>
+            <p *ngIf="name.errors.maxlength">не правилни длина {{name.errors.maxlength.requiredLength}}</p>
+          </div>
+        </div>
+        <div class="form-group" [ngClass]="{
+        'has-error': email.invalid && email.dirty,
+        'has-success': email.valid && email.dirty
+        }">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-envelope"> </i></span>
+            <input type="email" class="form-control" placeholder="Email Address" formControlName="email">
+          </div>
+          <div class="alert alert-danger" *ngIf="email.errors && (email.dirty || email.touched)">
+            <p *ngIf="email.errors.required">поле обяезателбное для ввода </p>
+            <p *ngIf="email.errors.pattern">не правилни формат </p>
+          </div>
+        </div>
+        <div class="form-group" [ngClass]="{
+         'has-error': password.invalid && password.dirty,
+         'has-success': password.valid && password.dirty
+        }">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-key"> </i></span>
+            <input type="password" class="form-control" placeholder="Password" formControlName="password">
+          </div>
+          <div class="alert alert-danger" *ngIf="password.errors && (password.dirty || password.touched)">
+            <p *ngIf="password.errors.required">поле обяезателбное для ввода </p>
+            <p *ngIf="password.errors.minlength">не правилни длина {{password.errors.minlength.requiredLength}}</p>
+            <p *ngIf="password.errors.maxlength">не правилни длина {{password.errors.maxlength.requiredLength}}</p>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-outline-primary btn-block"
+                [disabled]="register.invalid" routerLink="/home">
+          Register</button>
+      </form>
+    </article>
+  </section>
+</div>
