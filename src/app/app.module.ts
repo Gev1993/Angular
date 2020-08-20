@@ -19,12 +19,12 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 
 const appRoutes: Routes = [
+  { path: '', redirectTo:  'register', pathMatch: 'full'},
   { path: 'home', component: HomeComponent },
   { path: 'about', component: AboutComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: '', redirectTo:  'register', pathMatch: 'full'},
   { path: '**', component:  NotFoundComponent}
 ];
 

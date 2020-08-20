@@ -6,14 +6,11 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class DataService {
 
-  // tslint:disable-next-line:variable-name
   constructor(private _http: HttpClient) { }
 
-  // tslint:disable-next-line:variable-name
-  private _products;
+  public _products;
 
-  // tslint:disable-next-line:typedef
-  public getProducts() {
+  public getProducts(): void {
     return this. _products;
   }
 

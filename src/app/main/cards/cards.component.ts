@@ -21,7 +21,6 @@ export class CardsComponent implements OnInit {
   title: FormControl;
   description: FormControl;
 
-  // tslint:disable-next-line:variable-name
   constructor(private _dataService: DataService) { }
 
   ngOnInit(): void {
@@ -36,8 +35,7 @@ export class CardsComponent implements OnInit {
     this.createControl();
   }
 
-  // tslint:disable-next-line:typedef
-    createFormControl() {
+    createFormControl(): void {
     this.price = new FormControl('', [
       Validators.minLength(4), Validators.maxLength(10)
     ]);
@@ -49,8 +47,7 @@ export class CardsComponent implements OnInit {
     ]);
     }
 
-  // tslint:disable-next-line:typedef
-    createControl() {
+    createControl(): void {
     this.registrationForm = new FormGroup({
       price: this.price,
       title: this.title,
@@ -58,8 +55,7 @@ export class CardsComponent implements OnInit {
     });
   }
 
-  // tslint:disable-next-line:typedef
-  onSubmit() {
+  onSubmit(): void {
     if (this.registrationForm.valid) {
       console.log('submit');
       console.log(this.registrationForm.value);
@@ -110,7 +106,6 @@ export class CardsComponent implements OnInit {
   }
 
   public sort($event: boolean): void {
-    // tslint:disable-next-line:prefer-for-of
     for (let i = 0; i < this.product.length; i++) {
       for (let k = 0; k < this.product.length - 1; k++) {
         if (this.product[k].price > this.product[k + 1].price) {
@@ -125,8 +120,7 @@ export class CardsComponent implements OnInit {
     }
   }
 
-  // tslint:disable-next-line:typedef
-  showEdit() {
+  showEdit(): void {
     this.isLoading = true;
     setTimeout(() => {
       this.isEdit = !this.isEdit;

@@ -20,8 +20,7 @@ export class RegisterComponent implements OnInit {
     this.createControls();
   }
 
-  // tslint:disable-next-line:typedef
-  formsControl() {
+  formsControl(): void {
     this.name = new FormControl('', [
       Validators.required, Validators.minLength(3), Validators.maxLength(15)
     ]);
@@ -33,8 +32,7 @@ export class RegisterComponent implements OnInit {
     ]);
   }
 
-  // tslint:disable-next-line:typedef
-  createControls() {
+  createControls(): void {
     this.register = new FormGroup({
       name: this.name,
       email: this.email,
@@ -42,8 +40,7 @@ export class RegisterComponent implements OnInit {
     });
   }
 
-  // tslint:disable-next-line:typedef
-  onSubmits() {
+  onSubmits(): void {
     if (this.register.valid) {
       console.log('submit');
       console.log(this.register.value);

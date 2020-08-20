@@ -19,8 +19,7 @@ export class LoginComponent implements OnInit {
     this.loginCreate();
   }
 
-  // tslint:disable-next-line:typedef
-  loginControl() {
+  loginControl(): void {
     this.nameLogin = new FormControl('', [
       Validators.required, Validators.minLength(3), Validators.maxLength(15)
     ]);
@@ -29,16 +28,14 @@ export class LoginComponent implements OnInit {
     ]);
   }
 
-  // tslint:disable-next-line:typedef
-  loginCreate() {
+  loginCreate(): void {
     this.registerLogin = new FormGroup({
       nameLogin: this.nameLogin,
       passwordLogin: this.passwordLogin
     });
   }
 
-  // tslint:disable-next-line:typedef
-  loginSubmit() {
+  loginSubmit(): void {
     if (this.registerLogin.valid) {
       console.log('submit');
       console.log(this.registerLogin.value);
