@@ -1,0 +1,10 @@
+<div class="card ml-auto mr-auto" style="width: 18rem;">
+  <img class="card-img-top" [src]="product.imgUrl" [alt]="product.title">
+  <div class="card-body">
+    <h5 class="card-title" #productTitle>{{product.title}}</h5>
+    <h5 class="card-title">{{product.id}}</h5>
+    <h5 class="card-title">{{product.category}}</h5>
+    <p class="card-text">{{product.description}}</p>
+    <a routerLink="/home" class="btn btn-outline-primary">Back</a>
+  </div>
+</div>

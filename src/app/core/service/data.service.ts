@@ -8,7 +8,7 @@ export class DataService {
 
   constructor(private _http: HttpClient) { }
 
-  public _products;
+  private _products;
 
   public getProducts(): void {
     return this. _products;

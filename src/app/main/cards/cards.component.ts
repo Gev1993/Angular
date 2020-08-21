@@ -1,7 +1,8 @@
 import { Product } from '../../core/models/product';
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit} from '@angular/core';
 import { DataService } from '../../core/service/data.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {ActivatedRoute, Router} from '@angular/router';
 
 
 @Component({
@@ -16,12 +17,18 @@ export class CardsComponent implements OnInit {
   public cachedProduct: Product[] = [];
   public isLoading: boolean = true;
   public isEdit: boolean = false;
+  public selectedProduct: EventEmitter<any> = new EventEmitter();
   registrationForm: FormGroup;
   price: FormControl;
   title: FormControl;
   description: FormControl;
 
-  constructor(private _dataService: DataService) { }
+  constructor( private router: Router, private route: ActivatedRoute, private _dataService: DataService) { }
+
+  getDetails(id: number): void  {
+    this.selectedProduct.emit(this.product);
+    this.router.navigate(['detail/'+ id]);
+  }
 
   ngOnInit(): void {
     setTimeout(this._getProducts.bind(this), 1000);

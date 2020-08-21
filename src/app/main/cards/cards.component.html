@@ -31,10 +31,17 @@
     <div class="col-md-8">
       <div class="card-body">
         <p class="card-text">{{products.price + ' $'}}</p>
+        <p class="card-text">{{products.category}}</p>
         <h5 class="card-title">{{products.title}}</h5>
         <p class="card-text"><small class="text-muted">{{products.description}}</small></p>
 
         <button class="btn btn-outline-danger" (click)="showEdit()">Show</button>
+        <p class="card-text"><small class="text-muted">
+          <a (click) = "getDetails(products.id)"
+             routerLink = "{ '/product' + product?id}"
+             [queryParams] = "{'category': 'shoes'}"
+             class = "btn btn-outline-primary">View details</a>
+        </small></p>
         <br><br>
         <form *ngIf="isEdit" novalidate [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
           <div class="form-group" [ngClass]="{
@@ -73,7 +80,6 @@
             </div>
           </div>
             <button type="submit" class="btn btn-outline-primary" [disabled]="registrationForm.invalid">Save</button>
-
         </form>
 
       </div>
