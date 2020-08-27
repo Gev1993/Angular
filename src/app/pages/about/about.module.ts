@@ -1,11 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import {RouterModule} from '@angular/router';
+import {RouterModule, Routes} from '@angular/router';
 import { FormsModule} from '@angular/forms';
 import { SharedModule } from '../../shared/shared.module';
 import {AboutComponent} from './about.component';
 
+const aboutRoutes: Routes = [
+  {
+    path: '',
+    component: AboutComponent
+  }
+];
 
 @NgModule({
   declarations: [
@@ -14,12 +20,9 @@ import {AboutComponent} from './about.component';
   imports: [
     CommonModule,
     SharedModule,
-    RouterModule,
+    RouterModule.forChild(aboutRoutes),
     FormsModule,
   ],
-  exports: [
-    AboutComponent,
-  ]
 
 })
 
