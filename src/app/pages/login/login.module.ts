@@ -1,10 +1,15 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 
-import {RouterModule} from '@angular/router';
+import {RouterModule, Routes} from '@angular/router';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {SharedModule} from '../../shared/shared.module';
 import {LoginComponent} from './login.component';
+
+const loginRouter: Routes = [
+  {
+    path: '', component: LoginComponent
+  }
+];
 
 @NgModule({
   declarations: [
@@ -12,14 +17,10 @@ import {LoginComponent} from './login.component';
   ],
   imports: [
     CommonModule,
-    RouterModule,
+    RouterModule.forChild(loginRouter),
     FormsModule,
-    SharedModule,
     ReactiveFormsModule
   ],
-  exports: [
-    LoginComponent
-  ]
 })
 
 export class LoginModule { }

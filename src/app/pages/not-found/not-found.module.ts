@@ -1,11 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import {RouterModule} from '@angular/router';
-import { FormsModule} from '@angular/forms';
-import { SharedModule } from '../../shared/shared.module';
+import {RouterModule, Routes} from '@angular/router';
 import {NotFoundComponent} from './not-found.component';
 
+const notFoundRoutes: Routes = [
+  {
+    path: '', component: NotFoundComponent
+  }
+];
 
 @NgModule({
   declarations: [
@@ -13,14 +16,8 @@ import {NotFoundComponent} from './not-found.component';
   ],
   imports: [
     CommonModule,
-    SharedModule,
-    RouterModule,
-    FormsModule,
+    RouterModule.forChild(notFoundRoutes),
   ],
-  exports: [
-    NotFoundComponent
-  ]
-
 })
 
 export class NotFoundModule { }

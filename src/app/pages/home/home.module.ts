@@ -6,7 +6,6 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { SharedModule } from '../../shared/shared.module';
 import {HomeComponent} from './home.component';
 import {CardsComponent} from '../../main/cards/cards.component';
-import {AboutModule} from '../about/about.module';
 
 const homeRoutes: Routes = [
   {
@@ -25,10 +24,8 @@ const homeRoutes: Routes = [
     SharedModule,
     RouterModule.forChild(homeRoutes),
     FormsModule,
-    AboutModule,
     ReactiveFormsModule
-  ],
-
+  ]
 })
 
 export class HomeModule { }

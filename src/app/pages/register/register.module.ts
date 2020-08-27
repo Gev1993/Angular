@@ -1,10 +1,15 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 
-import {RouterModule} from '@angular/router';
+import {RouterModule, Routes} from '@angular/router';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {SharedModule} from '../../shared/shared.module';
 import {RegisterComponent} from './register.component';
+
+const registerRoutes: Routes = [
+  {
+    path: '', component: RegisterComponent
+  }
+];
 
 @NgModule({
   declarations: [
@@ -12,14 +17,10 @@ import {RegisterComponent} from './register.component';
   ],
   imports: [
     CommonModule,
-    RouterModule,
+    RouterModule.forChild(registerRoutes),
     FormsModule,
-    SharedModule,
     ReactiveFormsModule
   ],
-  exports: [
-    RegisterComponent
-  ]
 })
 
 export class RegisterModule { }

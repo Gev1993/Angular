@@ -2,17 +2,6 @@ import {NgModule} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule} from '@angular/router';
 
-import { ContactComponent } from './pages/contact/contact.component';
-import { NotFoundComponent } from './pages/not-found/not-found.component';
-import { LoginComponent } from './pages/login/login.component';
-import { RegisterComponent } from './pages/register/register.component';
-import { ViewDetailsComponent } from './pages/view-details/view-details.component';
-import {ContactModule} from './pages/contact/contact.module';
-import {LoginModule} from './pages/login/login.moduls';
-import {RegisterModule} from './pages/register/register.module';
-import {NotFoundModule} from './pages/not-found/not-found.module';
-import {ViewDetailsModule} from './pages/view-details/view-details.module';
-
 const appRoutes: Routes = [
   { path: '', redirectTo:  'register', pathMatch: 'full'},
   {
@@ -21,11 +10,21 @@ const appRoutes: Routes = [
   {
     path: 'about', loadChildren: () => import('./pages/about/about.module').then(m => m.AboutModule)
   },
-  { path: 'contact', component: ContactComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
-  { path: 'detail/:id', component: ViewDetailsComponent },
-  { path: '**', component:  NotFoundComponent}
+  {
+    path: 'contact', loadChildren: () => import('./pages/contact/contact.module').then(m => m.ContactModule)
+  },
+  {
+    path: 'login', loadChildren: () => import('./pages/login/login.module').then(m => m.LoginModule)
+  },
+  {
+    path: 'register', loadChildren: () => import('./pages/register/register.module').then(m => m.RegisterModule)
+  },
+  {
+    path: 'detail/:id', loadChildren: () => import('./pages/view-details/view-details.module').then(m => m.ViewDetailsModule)
+  },
+  {
+    path: '**', loadChildren: () => import('./pages/not-found/not-found.module').then(m => m.NotFoundModule)
+  },
 ];
 
 @NgModule({
@@ -36,11 +35,6 @@ const appRoutes: Routes = [
   ],
   exports: [
     RouterModule,
-    ContactModule,
-    LoginModule,
-    RegisterModule,
-    NotFoundModule,
-    ViewDetailsModule
   ]
 })
 export class AppRoutingModule { }

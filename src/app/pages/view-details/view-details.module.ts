@@ -1,11 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import {RouterModule} from '@angular/router';
-import { FormsModule} from '@angular/forms';
-import { SharedModule } from '../../shared/shared.module';
+import {RouterModule, Routes} from '@angular/router';
 import { ViewDetailsComponent } from './view-details.component';
 
+const detailsRouter: Routes = [
+  {
+    path: '', component: ViewDetailsComponent
+  }
+];
 
 @NgModule({
   declarations: [
@@ -13,14 +16,8 @@ import { ViewDetailsComponent } from './view-details.component';
   ],
   imports: [
     CommonModule,
-    SharedModule,
-    RouterModule,
-    FormsModule,
-  ],
-  exports: [
-    ViewDetailsComponent
+    RouterModule.forChild(detailsRouter),
   ]
-
 })
 
 export class ViewDetailsModule { }
