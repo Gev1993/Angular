@@ -12,7 +12,7 @@ const detailsRouter: Routes = [
 
 @NgModule({
   declarations: [
-    ViewDetailsComponent
+    ViewDetailsComponent,
   ],
   imports: [
     CommonModule,

@@ -23,6 +23,14 @@ const appRoutes: Routes = [
     path: 'detail/:id', loadChildren: () => import('./pages/view-details/view-details.module').then(m => m.ViewDetailsModule)
   },
   {
+     path: 'shops', loadChildren: () => import('./pages/view-details/shops/shops.module').then(m => m.ShopsModule)
+  },
+  {
+    path: 'review', loadChildren: () => import('./pages/view-details/review/review.module').then(m => m.ReviewModule)},
+  {
+    path: 'info', loadChildren: () => import('./pages/view-details/info/info.module').then(m => m.InfoModule)
+  },
+  {
     path: '**', loadChildren: () => import('./pages/not-found/not-found.module').then(m => m.NotFoundModule)
   },
 ];
@@ -34,7 +42,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
   ],
   exports: [
-    RouterModule,
+    RouterModule
   ]
 })
 export class AppRoutingModule { }
